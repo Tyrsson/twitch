@@ -1,0 +1,56 @@
+<?php
+?>
+<!doctype html>
+<html class="h-100" data-bs-theme="dark" lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8" />
+        <link href="/assets/css/bootstrap.css" rel="stylesheet">
+        <link href="/assets/css/style.css" rel="stylesheet">
+    </head>
+    <body class="d-flex flex-column h-100">
+        <nav class="navbar navbar-expand-lg mt-0">
+            <div class="container rounded bg-body-tertiary shadow-sm">
+                <div class="navbar-brand" href="#">
+                    <span class="fs-1 fw-bold">Twitch</span>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="row mx-auto">
+                        <div class="col">
+                        Header Content
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main class="flex-shrink-0 mt-5 mb-5">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <div id="app-workspace" class="card-body">
+                        <?=$this->content?>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer mt-auto">
+            <div class="container pb-3 rounded-top bg-body-tertiary">
+                <div class="row pt-2">
+                    <div class="col">
+                        &copy; <?=date('Y')?> <a href="/">Home Page</a> Twitch
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="/assets/js/jquery-3.6.4.js"></script>
+        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+        <script src="/assets/js/bootstrap.js"></script>
+        <script src="/assets/js/pubsub.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>
