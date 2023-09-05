@@ -26,7 +26,6 @@ final class Kernel
         protected ServerRequest $request,
         protected View $view
     ) {
-        // The __construct() method uses constructor property promotion please see the php manual for details
     }
 
     public static function init()
