@@ -15,7 +15,11 @@ class TemplatePathStackFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): TemplatePathStack
     {
         $config = $container->get('config');
-        $stack = $config['view_manager']['template_path_stack'] ?? ['script_paths' => [__DIR__ . '/../view']];
-        return new $requestedName($stack);
+        //$stack = $config['view_manager']['template_path_stack'] ?? ['script_paths' => [__DIR__ . '/../view']];
+        $resolver = new $requestedName();
+        $resolver->addpaths(
+            $config['view_manager']['template_path_stack'] ?? ['script_paths' => [__DIR__ . '/../view']]
+        );
+        return $resolver;
     }
 }

@@ -6,6 +6,7 @@ namespace App\Factory;
 
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\ServerRequestFactory;
+use Laminas\Diactoros\UriFactory;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerInterface;
 
@@ -13,7 +14,11 @@ class RequestFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): ServerRequest
     {
-        $factory = new ServerRequestFactory();
-        return $factory::fromGlobals();
+        $request = ServerRequestFactory::fromGlobals();
+        $request = $request->withAttribute(
+            'uri',
+            UriFactory::createFromSapi($request->getServerParams(), $request->getHeaders())
+        );
+        return $request;
     }
 }
