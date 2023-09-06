@@ -1,12 +1,26 @@
-<!doctype html>
+<?=$this->doctype()?>
 <html class="h-100" data-bs-theme="dark" lang="en">
     <head>
         <base href="/" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="X-UA-Compatible" content="IE=edge" />
         <meta charset="utf-8" />
-        <link href="/assets/css/bootstrap.css" rel="stylesheet">
-        <link href="/assets/css/style.css" rel="stylesheet">
+        <?=$this->headTitle($this->config('app_settings')['site']['title'] ?? '')->setSeparator(' -')->setAutoEscape(false) ?>
+        <?php
+        $this->headMeta()
+        ->appendName('description', $this->config('app_settings')['site']['description'] ?? 'Default description')
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+
+        echo $this->headMeta();
+        ?>
+        <?=$this->headLink(
+            [
+                'rel'  => 'icon',
+                'type' => 'image/vnd.microsoft.icon',
+                'href' => $this->basePath('assets/img/favicon.ico'),
+            ]
+            )->appendStylesheet($this->basePath('assets/css/bootstrap.min.css'))
+             ->appendStylesheet($this->basePath('assets/css/style.css'))
+        ?>
     </head>
     <body class="d-flex flex-column h-100">
         <nav class="navbar navbar-expand-lg mt-0">
@@ -49,7 +63,7 @@
             <div class="container pb-3 rounded-top bg-body-tertiary">
                 <div class="row pt-2">
                     <div class="col">
-                        &copy; <?=date('Y')?> <a href="/">Home Page</a> Twitch
+                        &copy; <?=date('Y') . ' ' . $this->config('app_settings')['site']['copyright']?>
                     </div>
                 </div>
             </div>

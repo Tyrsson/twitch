@@ -9,7 +9,8 @@
     "require": {
         "laminas/laminas-diactoros": "^3.2",
         "webinertia/webinertia-utils": "^0.0.10",
-        "laminas/laminas-view": "^2.30"
+        "laminas/laminas-view": "^2.30",
+        "laminas/laminas-config-aggregator": "^1.13"
     },
     "autoload": {
         "psr-4": {

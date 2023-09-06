@@ -1,10 +1,10 @@
 (($) => {
     'use strict'
-    $.subscribe('system/message', function(type, message, c) {
-        let alert = '<div class="alert alert-' + type + ' alert-dismissible" role="alert"><div>' + message + '</div></div>';
-        $('#system-message').html(alert);
-        $('#system-message-modal').modal('show');
-    });
+    // $.subscribe('system/message', function(type, message, c) {
+    //     let alert = '<div class="alert alert-' + type + ' alert-dismissible" role="alert"><div>' + message + '</div></div>';
+    //     $('#system-message').html(alert);
+    //     $('#system-message-modal').modal('show');
+    // });
     // Ajax the main navigation, uncomment this to ajaxify the site
     // $('ul.nav li a').on('click', function(event) {
     //     //alert('found');
@@ -30,36 +30,36 @@
     //     //console.log('cartId', cartId);
     // });
     // attach a .on to the app-workspace so we can listen for the submit
-    $('#app-workspace').on('submit', function(event) {
-        event.preventDefault();
-        let form    = $(event.target);
-        let href    = $(form).attr('action');
-        let domTrgt = $(form).attr('id');
-        let d       = $(form).serialize();
-        let p       = $(form).attr('method');
-        let request = $.ajax({
-            url: href,
-            method: p,
-            data: d
-        });
-        request.done(function(response, textStatus, jqXHR) {
-            $('#' + domTrgt).html(response);
-        });
-        request.fail(function() {
-        });
-        request.always(function() {
-            //console.log(request.getResponseHeader('systemMessage'));
-            if (request.getResponseHeader('successMessage') !== null) {
-                $.publish(
-                    'system/message',
-                    ['success', request.getResponseHeader('successMessage')]
-                );
-            } else if (request.getResponseHeader('exceptionMessage') !== null) {
-                $.publish(
-                    'system/message',
-                    ['danger', request.getResponseHeader('exceptionMessage')]
-                );
-            }
-        });
-    });
+    // $('#app-workspace').on('submit', function(event) {
+    //     event.preventDefault();
+    //     let form    = $(event.target);
+    //     let href    = $(form).attr('action');
+    //     let domTrgt = $(form).attr('id');
+    //     let d       = $(form).serialize();
+    //     let p       = $(form).attr('method');
+    //     let request = $.ajax({
+    //         url: href,
+    //         method: p,
+    //         data: d
+    //     });
+    //     request.done(function(response, textStatus, jqXHR) {
+    //         $('#' + domTrgt).html(response);
+    //     });
+    //     request.fail(function() {
+    //     });
+    //     request.always(function() {
+    //         //console.log(request.getResponseHeader('systemMessage'));
+    //         if (request.getResponseHeader('successMessage') !== null) {
+    //             $.publish(
+    //                 'system/message',
+    //                 ['success', request.getResponseHeader('successMessage')]
+    //             );
+    //         } else if (request.getResponseHeader('exceptionMessage') !== null) {
+    //             $.publish(
+    //                 'system/message',
+    //                 ['danger', request.getResponseHeader('exceptionMessage')]
+    //             );
+    //         }
+    //     });
+    // });
 })(jQuery);

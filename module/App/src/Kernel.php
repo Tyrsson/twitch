@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Module;
-use App\ModelInterface as AppModelInterface;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\UriFactory;
-use Laminas\ServiceManager\ServiceManager;
 use Laminas\View\Model\ModelInterface;
 use Laminas\View\View;
 use Laminas\View\Model\ViewModel;
@@ -17,34 +14,26 @@ use Webinertia\Utils\Debug;
 use function strlen;
 use function substr;
 
-final class Kernel
+class Kernel
 {
-    /** @var SerivceManager $sm */
-    protected $sm;
-
     public function __construct(
-        protected ServerRequest $request,
-        protected View $view
+        private ServerRequest $request,
+        private View $view,
+        private array $config
     ) {
     }
 
-    public static function init()
+    public function run()
     {
-        $config = (new Module())->getConfig();
-        $sm = new ServiceManager($config);
-        $sm->setService('config', $config);
-        return $sm->get(self::class)->run($sm);
-    }
-
-    public function run(ServiceManager $sm)
-    {
-        $this->sm = $sm;
         $layout = $this->getModel();
         $layout->setTemplate('layout');
         $layout->setOption('has_parent', true);
+        //Debug::dump($this->config);
         $page = $this->getModel($this->getRequestedPage());
+        $page->setVariables($this->config['app_settings']['page_data'][$page->getTemplate()] ?? []);
+
         $layout->addChild($page);
-        echo $this->view->render($layout);
+        $this->renderApp($layout);
     }
 
     protected function getRequestedPage(): string
@@ -65,11 +54,8 @@ final class Kernel
         return $model;
     }
 
-    protected function pageModel(ModelInterface $page): AppModelInterface
+    private function renderApp(ViewModel $layout)
     {
-        if ($this->sm->has($page::class)) {
-            return $this->sm->get($page::class);
-        }
-        return $page;
+        echo $this->view->render($layout);
     }
 }

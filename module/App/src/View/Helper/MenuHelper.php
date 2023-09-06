@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\View;
+namespace App\View\Helper;
 
 use DirectoryIterator;
 use Laminas\Diactoros\ServerRequest;
@@ -15,15 +15,13 @@ use function usort;
 
 final class MenuHelper
 {
-    public const TEMPLATE_PATH   = __DIR__ . '/../../view';
+    public const TEMPLATE_PATH   = __DIR__ . '/../../../view';
     public const LAYOUT_TEMPLATE = 'layout';
-
     private string $activeClass = 'active';
     private HtmlAttributesSet $helper;
     private array $pages = [];
     private string $ext;
     private array $order;
-
 
     public function __construct(
         private ServerRequest $request,
