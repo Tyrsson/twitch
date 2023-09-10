@@ -17,5 +17,8 @@
             "App\\": "module/App/src/",
             "Twitch\\": "module/Twitch/src/"
         }
+    },
+    "config": {
+        "platform-check": false
     }
 }
