@@ -6,7 +6,14 @@ use Laminas\ConfigAggregator\ArrayProvider;
 use Laminas\ConfigAggregator\ConfigAggregator;
 use Laminas\ConfigAggregator\PhpFileProvider;
 
+/**
+ * This is VERY important.
+ * The reason is that the service manager expects certain keys to be present at certain levels
+ * by doing this as we are we do not have to key juggle, nor do we have to add a new method just to return a
+ * specific key of the array. Its just simpler.
+ */
 $configProvider = new App\ConfigProvider();
+
 $aggregator = new ConfigAggregator([
     // Default App module config
     //App\ConfigProvider::class,
@@ -22,10 +29,11 @@ $aggregator = new ConfigAggregator([
      * loading in this order allows for any development mode settings to override them
      * without having to change the base values
      */
-    new PhpFileProvider(realpath(__DIR__ . '/../') . '/data/app/settings/{,*}.php'),
     new PhpFileProvider(realpath(__DIR__) . '/autoload/{{,*.}global,{,*.}local}.php'),
+    // we want runtime settings that intersect config options to override so they are honored after merge
+    new PhpFileProvider(realpath(__DIR__ . '/../') . '/data/app/settings/{,*}.php'),
     // Load development config if it exists
     new PhpFileProvider(realpath(__DIR__) . '/development.config.php'),
 ]);
-
+// return the merged config
 return $aggregator->getMergedConfig();

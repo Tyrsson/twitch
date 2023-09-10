@@ -22,15 +22,12 @@ final class ConfigProvider
     public function getDependencyConfig(): array
     {
         return [
-            // 'aliases'   => [
-            //     'menu'  => MenuHelper::class,
-            // ],
             'factories' => [
                 Kernel::class                          => Factory\KernelFactory::class,
                 ServerRequestInterface::class          => Factory\RequestFactory::class,
+                View\HelperPluginManager::class        => Factory\HelperPluginManagerFactory::class,
                 View\Resolver\TemplatePathStack::class => Factory\TemplatePathStackFactory::class,
                 View\Renderer\PhpRenderer::class       => Factory\PhpRendererfactory::class,
-                View\HelperPluginManager::class        => Factory\HelperPluginManagerFactory::class,
                 View\View::class                       => Factory\ViewFactory::class,
             ],
             'view_helpers' => [

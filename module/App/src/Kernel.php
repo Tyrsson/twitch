@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
+use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\UriFactory;
 use Laminas\View\Model\ModelInterface;
@@ -28,12 +29,11 @@ class Kernel
         $layout = $this->getModel();
         $layout->setTemplate('layout');
         $layout->setOption('has_parent', true);
-        //Debug::dump($this->config);
         $page = $this->getModel($this->getRequestedPage());
         $page->setVariables($this->config['app_settings']['page_data'][$page->getTemplate()] ?? []);
 
         $layout->addChild($page);
-        $this->renderApp($layout);
+        return $this->renderApp($layout);
     }
 
     protected function getRequestedPage(): string
@@ -56,6 +56,9 @@ class Kernel
 
     private function renderApp(ViewModel $layout)
     {
-        echo $this->view->render($layout);
+        $response = new HtmlResponse(
+            $this->view->render($layout)
+        );
+        echo $response->getBody();
     }
 }
