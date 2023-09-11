@@ -3,7 +3,7 @@
     <head>
         <base href="/" />
         <meta charset="utf-8" />
-        <?=$this->headTitle($this->config('app_settings')['site']['title'] ?? '')->setSeparator(' -')->setAutoEscape(false) ?>
+        <?=$this->headTitle($this->config('app_settings')['site']['title'] ?? '')->setSeparator(' - ')->setAutoEscape(false) ?>
         <?php
         $this->headMeta()
         ->appendName('description', $this->config('app_settings')['site']['description'] ?? 'Default description')
