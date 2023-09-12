@@ -15,6 +15,7 @@ use Laminas\ConfigAggregator\PhpFileProvider;
 $configProvider = new App\ConfigProvider();
 
 $aggregator = new ConfigAggregator([
+    \Laminas\HttpHandlerRunner\ConfigProvider::class,
     // Default App module config
     //App\ConfigProvider::class,
     new ArrayProvider($configProvider->getDependencyConfig()),

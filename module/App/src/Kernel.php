@@ -11,6 +11,7 @@ use Laminas\View\View;
 use Laminas\View\Model\ViewModel;
 use Webinertia\Utils\Debug;
 
+use function in_array;
 use function strlen;
 use function substr;
 
@@ -25,6 +26,7 @@ class Kernel
         private View $view,
         private array $config
     ) {
+        $this->request = $this->request->withHeader('X-Requested-With', 'XMLHttpRequest');
         $this->queryParams = $this->request->getQueryParams();
         if (
             isset($this->queryParams[self::USER_PARAM_KEY])
@@ -35,20 +37,25 @@ class Kernel
                 $this->config['user-data'][$this->queryParams[self::USER_PARAM_KEY]]
             );
         }
+        $this->request = $this->request->withAttribute('isAjax', false);
+        if (in_array('XMLHttpRequest', $this->request->getHeader('X-Requested-With'), true)) {
+            $this->request = $this->request->withAttribute('isAjax', true);
+        }
     }
 
     public function run()
     {
-        // Debug::dump($this->request);
+         //Debug::dump($this->request);
         // //Debug::dump();
-        // die();
+         //die();
         $layout = $this->getModel();
         $layout->setTemplate('layout');
         $layout->setOption('has_parent', true);
         $page = $this->getModel($this->getRequestedPage());
-
-
         $layout->addChild($page);
+        if ($this->request->getAttribute('isAjax')) {
+            $layout->setTerminal(true);
+        }
         return $this->renderApp($layout);
     }
 

@@ -14,4 +14,12 @@ return array(
     'de95e0ac670b27c84ef8c5ac41fc1b34' => $vendorDir . '/laminas/laminas-diactoros/src/functions/normalize_server.php',
     'b6c2870932b0250c10334a86dcb33c7f' => $vendorDir . '/laminas/laminas-diactoros/src/functions/normalize_uploaded_files.php',
     'd02cf21124526632320d6f20b1bbf905' => $vendorDir . '/laminas/laminas-diactoros/src/functions/parse_cookie_header.php',
+    '3f8ee9969da604d0f15c841b77b11450' => $vendorDir . '/laminas/laminas-stratigility/src/functions/double-pass-middleware.php',
+    'ee5523a5d51d6d51030227439db1ef74' => $vendorDir . '/laminas/laminas-stratigility/src/functions/host.php',
+    '5f6e29ca023a0bdefa2476adb465d527' => $vendorDir . '/laminas/laminas-stratigility/src/functions/middleware.php',
+    '9cafd472178656835c3361ed18897082' => $vendorDir . '/laminas/laminas-stratigility/src/functions/path.php',
+    '9bc1a9c6b25234212b0ecc0b82bc7fcd' => $vendorDir . '/laminas/laminas-stratigility/src/functions/double-pass-middleware.legacy.php',
+    '9ad95be8d1f1c62e52cb995973bf5246' => $vendorDir . '/laminas/laminas-stratigility/src/functions/host.legacy.php',
+    '44f5a19d6d262baf7ab55c8a8bb56f5a' => $vendorDir . '/laminas/laminas-stratigility/src/functions/middleware.legacy.php',
+    'dd89a2771fc24829c6aade9a7786bd8f' => $vendorDir . '/laminas/laminas-stratigility/src/functions/path.legacy.php',
 );
