@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'Webinertia\\Utils\\' => array($vendorDir . '/webinertia/webinertia-utils/src'),
     'Webimpress\\SafeWriter\\' => array($vendorDir . '/webimpress/safe-writer/src'),
     'Twitch\\' => array($baseDir . '/module/Twitch/src'),
@@ -13,6 +14,9 @@ return array(
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
+    'Mezzio\\Template\\' => array($vendorDir . '/mezzio/mezzio-template/src'),
+    'Mezzio\\Router\\' => array($vendorDir . '/mezzio/mezzio-router/src'),
+    'Mezzio\\' => array($vendorDir . '/mezzio/mezzio/src'),
     'Laminas\\View\\' => array($vendorDir . '/laminas/laminas-view/src'),
     'Laminas\\Stratigility\\' => array($vendorDir . '/laminas/laminas-stratigility/src'),
     'Laminas\\Stdlib\\' => array($vendorDir . '/laminas/laminas-stdlib/src'),
