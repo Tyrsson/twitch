@@ -6,9 +6,13 @@ namespace App;
 
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\ServerRequest;
+use Laminas\HttpHandlerRunner\RequestHandlerRunnerInterface;
+use Laminas\Stratigility\MiddlewarePipeInterface;
 use Laminas\View\Model\ModelInterface;
 use Laminas\View\View;
 use Laminas\View\Model\ViewModel;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Webinertia\Utils\Debug;
 
 use function in_array;
