@@ -4,11 +4,22 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\ApplicationPipeline;
+use App\MiddlewareContainer;
+use App\Factory\MiddlewareContainerFactory;
+use App\MiddlewareFactory;
+use App\MiddlewareFactoryInterface;
 use App\View\Helper\Config;
 use App\View\Helper\Factory\ConfigFactory;
 use App\View\Helper\MenuHelper;
 use App\View\Helper\Factory\MenuHelperFactory;
+use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
+use Laminas\HttpHandlerRunner\RequestHandlerRunner;
+use Laminas\HttpHandlerRunner\RequestHandlerRunnerInterface;
+use Laminas\Stratigility\Middleware\ErrorHandler;
+use Laminas\Stratigility\MiddlewarePipe;
 use Laminas\View;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class ConfigProvider
@@ -21,10 +32,27 @@ final class ConfigProvider
     }
     public function getDependencyConfig(): array
     {
+        // phpcs:disable Generic.Files.LineLength.TooLong
         return [
+            'aliases'   => [
+                RequestHandlerRunnerInterface::class => RequestHandlerRunner::class,
+                MiddlewareFactoryInterface::class    => MiddlewareFactory::class,
+            ],
             'factories' => [
+                'App\ApplicationPipeline' => function(): MiddlewarePipe {
+                    return new MiddlewarePipe();
+                },
+                EmitterInterface::class                => Factory\EmitterFactory::class,
+                ErrorHandler::class                    => Factory\ErrorHandlerFactory::class,
                 Kernel::class                          => Factory\KernelFactory::class,
-                ServerRequestInterface::class          => Factory\RequestFactory::class,
+                Handler\NotFoundHandler::class         => Factory\NotFoundHandlerFactory::class,
+                MiddlewareContainer::class             => Factory\MiddlewareContainerFactory::class,
+                MiddlewareFactory::class               => Factory\MiddlewareFactoryFactory::class,
+                Middleware\ErrorResponseGenerator::class => Factory\ErrorResponseGeneratorFactory::class,
+                RequestHandlerRunner::class            => Factory\RequestHandlerRunnerFactory::class,
+                ResponseInterface::class               => Factory\ResponseFactoryFactory::class,
+                Response\ServerRequestErrorResponseGenerator::class => Factory\ServerRequestErrorResponseGeneratorFactory::class,
+                ServerRequestInterface::class          => Factory\ServerRequestFactoryFactory::class,
                 View\HelperPluginManager::class        => Factory\HelperPluginManagerFactory::class,
                 View\Resolver\TemplatePathStack::class => Factory\TemplatePathStackFactory::class,
                 View\Renderer\PhpRenderer::class       => Factory\PhpRendererfactory::class,
@@ -53,5 +81,6 @@ final class ConfigProvider
                 ],
             ],
         ];
+        // phpcs:enable Generic.Files.LineLength.TooLong
     }
 }

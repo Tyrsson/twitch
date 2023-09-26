@@ -8,6 +8,13 @@ class ComposerStaticInitf19a62e177ccd7729184a2d7fbee0e9b
 {
     public static $files = array (
         'c9d07b32a2e02bc0fc582d4f0c1b56cc' => __DIR__ . '/..' . '/laminas/laminas-servicemanager/src/autoload.php',
+        '07d7f1a47144818725fd8d91a907ac57' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/create_uploaded_file.php',
+        'da94ac5d3ca7d2dbab84ce561ce72bfd' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_headers_from_sapi.php',
+        '3d97c8dcdfba8cb85d3b34f116bb248b' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_method_from_sapi.php',
+        'e6f3bc6883e449ab367280b34158c05b' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_protocol_version_from_sapi.php',
+        'de95e0ac670b27c84ef8c5ac41fc1b34' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_server.php',
+        'b6c2870932b0250c10334a86dcb33c7f' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_uploaded_files.php',
+        'd02cf21124526632320d6f20b1bbf905' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/parse_cookie_header.php',
         '3f8ee9969da604d0f15c841b77b11450' => __DIR__ . '/..' . '/laminas/laminas-stratigility/src/functions/double-pass-middleware.php',
         'ee5523a5d51d6d51030227439db1ef74' => __DIR__ . '/..' . '/laminas/laminas-stratigility/src/functions/host.php',
         '5f6e29ca023a0bdefa2476adb465d527' => __DIR__ . '/..' . '/laminas/laminas-stratigility/src/functions/middleware.php',
@@ -16,15 +23,6 @@ class ComposerStaticInitf19a62e177ccd7729184a2d7fbee0e9b
         '9ad95be8d1f1c62e52cb995973bf5246' => __DIR__ . '/..' . '/laminas/laminas-stratigility/src/functions/host.legacy.php',
         '44f5a19d6d262baf7ab55c8a8bb56f5a' => __DIR__ . '/..' . '/laminas/laminas-stratigility/src/functions/middleware.legacy.php',
         'dd89a2771fc24829c6aade9a7786bd8f' => __DIR__ . '/..' . '/laminas/laminas-stratigility/src/functions/path.legacy.php',
-        '07d7f1a47144818725fd8d91a907ac57' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/create_uploaded_file.php',
-        'da94ac5d3ca7d2dbab84ce561ce72bfd' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_headers_from_sapi.php',
-        '3d97c8dcdfba8cb85d3b34f116bb248b' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_method_from_sapi.php',
-        'e6f3bc6883e449ab367280b34158c05b' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_protocol_version_from_sapi.php',
-        'de95e0ac670b27c84ef8c5ac41fc1b34' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_server.php',
-        'b6c2870932b0250c10334a86dcb33c7f' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_uploaded_files.php',
-        'd02cf21124526632320d6f20b1bbf905' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/parse_cookie_header.php',
-        '12015786a5f2990d4244c42435db1ba0' => __DIR__ . '/..' . '/mezzio/mezzio/src/constants.php',
-        '792a652af1b56b529053947cf6432b79' => __DIR__ . '/..' . '/mezzio/mezzio/src/constants.legacy.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -44,12 +42,6 @@ class ComposerStaticInitf19a62e177ccd7729184a2d7fbee0e9b
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
-        ),
-        'M' => 
-        array (
-            'Mezzio\\Template\\' => 16,
-            'Mezzio\\Router\\' => 14,
-            'Mezzio\\' => 7,
         ),
         'L' => 
         array (
@@ -113,18 +105,6 @@ class ComposerStaticInitf19a62e177ccd7729184a2d7fbee0e9b
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
-        ),
-        'Mezzio\\Template\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mezzio/mezzio-template/src',
-        ),
-        'Mezzio\\Router\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mezzio/mezzio-router/src',
-        ),
-        'Mezzio\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mezzio/mezzio/src',
         ),
         'Laminas\\View\\' => 
         array (

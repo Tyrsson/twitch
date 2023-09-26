@@ -14,5 +14,7 @@ require 'vendor/autoload.php'; // Using the composer autoloader, its pretty much
     $container = require 'config/container.php';
     // This returns us an instance of the Kernel class ready for use
     $app       = $container->get(Kernel::class);
+    $factory   = $container->get(\App\MiddlewareFactory::class);
+    (require 'config/pipeline.php')($app, $factory, $container);
     $app->run();
 })();

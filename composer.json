@@ -13,7 +13,7 @@
         "laminas/laminas-config-aggregator": "^1.13",
         "laminas/laminas-httphandlerrunner": "^2.9",
         "laminas/laminas-stratigility": "^3.10",
-        "mezzio/mezzio": "^3.17"
+        "webmozart/assert": "^1.11"
     },
     "autoload": {
         "psr-4": {
